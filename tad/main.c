@@ -24,4 +24,3 @@ int main(){
 	filaImprime(fr);
 	return 0;
 }
-

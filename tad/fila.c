@@ -6,31 +6,24 @@
 struct fila{
 	Lista *inicio;
 	Lista *fim;
-};
-struct lista{
-	float x;
-	struct lista *prox;
-};
-typedef struct fila Fila;
-typedef struct lista Lista;
+}typedef struct fila Fila;
 
 Fila *criaFila(){
 	Fila *f = (Fila*)malloc(sizeof(Fila));
 	f->inicio = NULL;
 	f->fim = NULL;
 	return f;
-
 }
 
 void insereFila(Fila *f,float valor){
 	Lista *novo = (Lista*)malloc(sizeof(Lista));
-	novo->x = valor;
+	novo->num = valor;
 	novo->prox = NULL;
 	if(f->fim != NULL)
 		f->fim->prox = novo;
 	else
-	f->inicio = novo;
-	f->fim = novo;
+		f->inicio = novo;
+		f->fim = novo;
 }
 
 int filaVazia(Fila *f){
@@ -66,7 +59,7 @@ void filaLibera(Fila *f){
 void filaImprime(Fila *f){
 	Lista *q;
 	for(q = f->inicio;q != NULL; q = q->prox){
-	printf("%.2f\n", q->x);
+	printf("%.2f\n", q->num);
 	}
 }
 
@@ -92,12 +85,12 @@ void combinaFila(Fila *fr,Fila *f1, Fila *f2){
 		q1 = f1->inicio;
 		q2 = f2->inicio;
 		if(filaVazia(f2))
-			insereFila(fr, q1->x);
+			insereFila(fr, q1->num);
 		if(filaVazia(f1))
-			insereFila(fr, q2->x);
+			insereFila(fr, q2->num);
 		else{
-			insereFila(fr, q1->x);
-			insereFila(fr, q2->x);
+			insereFila(fr, q1->num);
+			insereFila(fr, q2->num);
 		}	
 		float t1;
 		t1 = remova(f1);
@@ -107,21 +100,3 @@ void combinaFila(Fila *fr,Fila *f1, Fila *f2){
 	free(q1);
 	free(q2);	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
